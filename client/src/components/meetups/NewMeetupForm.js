@@ -14,12 +14,14 @@ const NewMeetupForm = (props) => {
         const enteredImage = imageInputRef.current.value;
         const enteredAddress = addressInputRef.current.value;
         const enteredDescription = descriptionInputRef.current.value;
+        const favorited = false;      
 
         const meetupData = {
             title: enteredTitle,
             image: enteredImage,
             address: enteredAddress,
             description: enteredDescription,
+            favorited: favorited
         };
 
         props.onAddMeetup(meetupData);

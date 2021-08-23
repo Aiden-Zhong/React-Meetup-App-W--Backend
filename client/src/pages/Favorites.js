@@ -1,16 +1,24 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import FavoritesContext from "../store/favorites-context"
 import MeetupList from "../components/meetups/MeetupList"
 
+
 const Favorites = () => {
-    const favoritesCtx = useContext(FavoritesContext)
+    const { favorites, getFavorites, totalFavorites } = useContext(FavoritesContext)
+
+
+    useEffect(() => {
+        getFavorites();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     let content;
 
-    if (favoritesCtx.totalFavorites === 0) {
+    if (totalFavorites === 0) {
         content = <p> No Favorite Yettttttttttttttttttttt</p>;
     } else {
-        content = <MeetupList meetups={favoritesCtx.favorites}/>;
+        //content = <MeetupList meetups={favoritesCtx.favorites} />;
+        content = <MeetupList meetups={favorites} />;
     }
 
     return (
